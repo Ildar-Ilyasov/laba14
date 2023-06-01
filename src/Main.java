@@ -3,8 +3,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class Main {
     public static void main(String[] args) {
-        try(BufferedReader br = new BufferedReader(new FileReader("comment.txt"));
-            BufferedWriter fl = new BufferedWriter(new FileWriter("nocomment.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader("comments.txt"));
+            BufferedWriter fl = new BufferedWriter(new FileWriter("nocomments.txt"))){
             int s;
             StringBuffer cods = new StringBuffer();
             while((s = br.read())!=-1){
@@ -12,8 +12,8 @@ public class Main {
             }
             Pattern pattern = Pattern.compile("(/\\*.*?\\*/)|(//[^\n]*)", Pattern.DOTALL);
             Matcher matcher = pattern.matcher(cods.toString());
-            StringBuffer nocomment=new StringBuffer(matcher.replaceAll(""));
-            fl.write(nocomment.toString());
+            StringBuffer nocomments=new StringBuffer(matcher.replaceAll(""));
+            fl.write(nocomments.toString());
         }
         catch(IOException ex){
             System.out.println(ex.getMessage());
